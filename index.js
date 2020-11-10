@@ -79,10 +79,21 @@ var enforceVideoInChannel = function(channel) {
     if (response.members) {
       response.members.forEach(member => {
         if (!member.voice.selfVideo) {
-          console.log(member.user + " doesn't have video on. Removing them from voice.");
-          // TODO kick member
-          // guildmember.voice.kick()
+          console.log("Kicking" + member.user);
           member.voice.kick();
+
+          var kickMessage = "Hi! You were kicked from the channel " + response.name
+          + " because your video wasn't on. You can rejoin, but be sure to "
+          + "turn on your video so you're not kicked again. _I'm a bot. Problem? DM @n8m8#7540_";
+          if (member.user.dmChannel) {
+            member.user.dmChannel.send(kickMessage);
+          } else {
+            member.user.createDM().then(response => {
+              response.send(kickMessage);
+            }, error => {
+              console.error("Unable to create DM convo with " + member.user.id);
+            });
+          }
         } else {
           console.log(member.user.username + " had their video on. They are safe (for now).");
         }
