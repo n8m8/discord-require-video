@@ -16,3 +16,10 @@ If you get kicked, users can simply rejoin the room and turn their video on fast
 |!requirecam|Makes the bot watch whatever channel you are currently in, indefinitely|
 |!requirecam stop|Stop watching whatever channel you are currently in|
 |!requirecam list|List the channels being monitored for the server you make the request|
+
+# Todo list
+Improvements that need to be made loosely in order of importance:
+1. Grace period for people who recently joined the channel
+2. Dockerfile and/or some way to easily deploy
+3. Store monitor data in file instead of locally so restarting the app doesn't nuke everything
+4. Change from hardcoded allowed user to use Discord roles to determine who can interact with the bot on a server-to-server basis
