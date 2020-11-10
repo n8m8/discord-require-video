@@ -1,8 +1,8 @@
+require('dotenv').config();
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const TOKEN = 'Nzc1MDg2MTI5MzgwNTg5NTk4.X6hNNQ.E5AklMMW4z28lwVT3DF8ifOBWtA';
-client.login(TOKEN);
+client.login(process.env.DISCORD_BOT_TOKEN);
 
 var TIMEOUT_MAP = {};
 
@@ -31,7 +31,7 @@ client.on('message', async message => {
     // TIMEOUT_MAP is an object with guildId and channelId, and the interval to maintain
     TIMEOUT_MAP[channelId] = {
       channelId: channelId,
-      interval: setInterval(enforceVideoInChannel, 3000, message.member.voice.channel)
+      interval: setInterval(enforceVideoInChannel, process.env.REFRESH_TIME * 1000, message.member.voice.channel)
     };
   } else if (message.content === '!requirecam stop') {
     let channelId = message.member.voice.channel.id;
