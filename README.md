@@ -9,8 +9,10 @@ If you get kicked, users can simply rejoin the room and turn their video on fast
 2. Create a file named `.env`. Copy the contents of `template.env` into your `.env` file.
 3. Configure your `.env` as described in the template file. All arguments are required.
 4. Add the bot to your server with Admin permissions (Maybe you can be more granular -- I haven't tested this yet)
+5. Only people with the `MANAGE_GUILD` permission can interact with the bot
 
 # Command list
+You can use commands in any text channel of your server.
 |Command|Description|
 |-|-|
 |!requirecam|Makes the bot watch whatever channel you are currently in, indefinitely|
@@ -19,7 +21,6 @@ If you get kicked, users can simply rejoin the room and turn their video on fast
 
 # Todo list
 Improvements that need to be made loosely in order of importance:
-1. Grace period for people who recently joined the channel
-2. Dockerfile and/or some way to easily deploy
-3. Store monitor data in file instead of locally so restarting the app doesn't nuke everything
-4. Change from hardcoded allowed user to use Discord roles to determine who can interact with the bot on a server-to-server basis
+1. Store monitor data in file instead of locally so restarting the app doesn't nuke everything
+2. Grace period for people who recently joined the channel
+3. Cleanup if-else command structure to something cleaner [like discord.js recommends](https://discordjs.guide/command-handling/#individual-command-files)

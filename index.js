@@ -12,7 +12,8 @@ client.on('message', async message => {
 
   console.log('received message');
 
-  if (process.env.ALLOWED_USER_ID === message.member.id) {
+  // if (process.env.ALLOWED_USER_ID === message.member.id) {
+  if (member.hasPermission('MANAGE_GUILD')) {
     if (message.content === '!requirecam') {
       if (!message.member.voice.channel) {
         message.reply('You need to be in a voice channel for me to monitor!');
@@ -102,8 +103,6 @@ var enforceVideoInChannel = function(channel) {
   }, error => {
     console.log("Error fetching channel " + channel.id);
   });
-
-
 }
 
 // client.on('ready', () => {
